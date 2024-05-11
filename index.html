@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Temas</title>
+    <script src="../js/utilidades.js"></script>
+    
+    <script>
+
+        function adicionarNombreALista(){
+
+            var nombreTematico = document.getElementById('nombres_tematicos');
+
+            if(nombreTematico.value.length > 0) {
+
+                var listaNombreTematicos = document.getElementById('lista_nombre_tematicos');
+
+                var listItem = document.createElement('li');
+                listItem.textContent = nombreTematico.value;
+
+                var botonEditar = document.createElement('button');
+                botonEditar.textContent = 'Editar';
+
+                var botonEliminar = document.createElement('button');
+                botonEliminar.textContent = 'Eliminar';
+                botonEliminar.addEventListener("click", function(){
+                    listItem.parentNode.removeChild(listItem);
+                });
+
+
+                listItem.appendChild(botonEliminar);
+
+                listaNombreTematicos.appendChild(listItem);
+                nombreTematico.value = '';
+
+            } else { 
+                alert("Debe digitar un numero para adiccionar");
+            }
+
+            nombreTematico.focus();
+        }
+
+    </script>
+</head>
+<body>
+    
+    <input type="tel" id="nombres_tematicos">
+    <button onclick="adicionarNombreALista()">Adicionar</button>
+
+    <ul id="lista_nombre_tematicos">
+        <caption>Lista de telefonos</caption>
+    </ul>
+
+</body>
+</html>
